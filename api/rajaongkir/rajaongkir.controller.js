@@ -6,7 +6,7 @@ module.exports = {
         let isi = req.body;
         cekCost(isi, (err, body)=>{
             return res.status(200).json({
-                body: body.body
+                body: body.body.rajaongkir
             });
         })
     },

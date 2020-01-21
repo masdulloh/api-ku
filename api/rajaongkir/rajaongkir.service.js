@@ -20,6 +20,7 @@ module.exports = {
             return callback(null, response);
         });
     },
+
     mootaProfile: callback => {
         request({
             url: "https://app.moota.co/api/v1/profile",

@@ -35,29 +35,38 @@ module.exports = {
             db.collection('orders').where('verif', '==', myMootaPush.description).get()
             .then(snapshot => {
                 if (snapshot.empty) {
-                    console.log('No city matching documents.');
+                    //console.log('No city matching documents.');
                     res.send(allData)
                     return;
                 } 
                 snapshot.forEach(doc => {
-                    
                     if (Number(myMootaPush.amount)===doc.data().gross && myMootaPush.description===doc.data().verif){
-                        allData.push(doc.data())
-                        res.send(allData)
-                        console.log('BERHASIL');
+                        allData.push(doc.data());
+                        db.collection('orders').doc(doc.id)
+                        .update({ paystatus: 'Paid' })
+                        .then(() => {
+                            //console.log('Update pembayaran berhasil');
+                            res.send(allData);
+                        }).catch(err => {
+                            res.send(allData);
+                            //console.log('Error update payment status: ', err);
+                        })
                         return;
                     } else {
-                        console.log('ELSE GAGAL');
+                        //console.log('ELSE GAGAL');
                         res.send(allData);
                         return;
                     }
                 });
             }).catch(err => {
-                console.log('Error getting documents', err);
+                //console.log('Error getting documents', err);
                 res.send(allData)
                 return;
             })
     },
+
+
+
     mootaProfile: (req, res) => {
         mootaProfile((err, body)=>{
             //console.log('asssuu');

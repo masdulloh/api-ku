@@ -1,4 +1,4 @@
-const {cekCost, mootaProfile} = require("./rajaongkir.service");
+const {cekCost, mootaProfile, mootaBank} = require("./rajaongkir.service");
 const firebase = require('firebase');
 const firebaseConfig = {
     apiKey: "AIzaSyCDBk7broCXK-8iOq8QYJc0gAErMJISjYg",
@@ -23,6 +23,14 @@ module.exports = {
             return res.status(200).json({
                 body: body.body.rajaongkir
             });
+        })
+    },
+    mootaBank: (req, res) => {
+        mootaBank((err, body)=>{
+            //console.log('asssuu');
+            return res.status(200).json({
+                body: body.body.data
+            })
         })
     },
 
@@ -122,7 +130,7 @@ module.exports = {
         mootaProfile((err, body)=>{
             //console.log('asssuu');
             return res.status(200).json({
-                body: body.body
+                body: body.body[0]
             })
         })
     }

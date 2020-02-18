@@ -33,5 +33,19 @@ module.exports = {
         }, function (error, response, body) {
             return callback(null, response);
         });
+    },
+
+    mootaBank: callback => {
+        request({
+            url: "https://app.moota.co/api/v1/bank",
+            method: "GET",
+            json: true, 
+            headers:{
+                Accept: 'application/json',
+                Authorization: 'Bearer RYtjp4aM2hbEYz6PQm3xJMX8dfUUpZOgXizmmK9p2k30T9PJwT'
+            }
+        }, function (error, response, body) {
+            return callback(null, response);
+        });
     }
 }

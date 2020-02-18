@@ -47,5 +47,19 @@ module.exports = {
         }, function (error, response, body) {
             return callback(null, response);
         });
+    },
+
+    mootaMutasi: callback => {
+        request({
+            url: "https://app.moota.co/api/v1/bank/E32zpqnYjA1/mutation/recent/20",
+            method: "GET",
+            json: true, 
+            headers:{
+                Accept: 'application/json',
+                Authorization: 'Bearer RYtjp4aM2hbEYz6PQm3xJMX8dfUUpZOgXizmmK9p2k30T9PJwT'
+            }
+        }, function (error, response, body) {
+            return callback(null, response);
+        });
     }
 }

@@ -20,7 +20,7 @@ module.exports = {
             return callback(null, response);
         });
     },
-
+// untuk transaksi di moota
     mootaProfile: callback => {
         request({
             url: "https://app.moota.co/api/v1/profile",

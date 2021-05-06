@@ -1,3 +1,5 @@
+// Ini digunakan untuk push API karena jika menggunakan NODE.js langsung tidak dapat
+
 const {cekCost, mootaProfile, mootaBank, mootaMutasi} = require("./rajaongkir.service");
 const firebase = require('firebase');
 const firebaseConfig = {
